@@ -1,4 +1,4 @@
-![Alt text](assets/img/frog-logo.png)
+![Alt text](assets/img/frog-logo.png=250x250)
 
 # FROG
 FROG (FROm Ground) is an initiative to offer several vision and language services for agricultural (business) applications. The objective of this initiative is to increase the sustainability of food supply from agricultural farms.
