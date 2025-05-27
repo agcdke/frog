@@ -1,4 +1,4 @@
-![Alt text](assets/img/frog-logo.png=1024x1024)
+<img src="https://github.com/agcdke/frog/blob/master/assets/img/frog-logo.png" alt="Alt text" width="250">
 
 # FROG
 FROG (FROm Ground) is an initiative to offer several vision and language services for agricultural (business) applications. The objective of this initiative is to increase the sustainability of food supply from agricultural farms.
