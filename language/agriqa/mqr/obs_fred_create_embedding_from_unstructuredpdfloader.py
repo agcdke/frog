@@ -8,7 +8,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 import ollama
-from fred_mqr_rag_config import fred_config
+from fred_rag_mqr_config import fred_config
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

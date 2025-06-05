@@ -4,7 +4,7 @@ fred_config = dict(
     model_name = "gemma3",
     embedding_model = "nomic-embed-text",
     vector_store_name = "fred-rag-unece",
-    chromadb_persist_directory = "artifacts/mqr/mqr_chroma_db",
+    chromadb_persist_directory = "artifacts/mqr_qa/mqr_chroma_db",
     fred_contextual_promt_template = """
     You are a LLM assistant for FRED project. Your task is to generate five
     different versions of the given user question to retrieve relevant documents from

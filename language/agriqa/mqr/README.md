@@ -32,7 +32,7 @@ Some approaches are used for preliminary framework:
 * *Embedding Model*: Pull **nomic-embed-text** model from Ollama website.
 * *LLM*: Pull **gemma3** model from Ollama website.
 * *Vector Store*: Chroma is used.
-* *PDF Docs*: UnstructuredPDFLoader is used to parse PDFs. Document parsing is a crucial tasks. There are several ways to improve it by analysing different refinement techniques.
+* *PDF Docs*: UnstructuredPDFLoader is used initially to parse PDFs (now obsoleted). Document parsing is a crucial tasks. There are several ways to improve it by analysing different refinement techniques. PDFPlumber is used to extract tabular data, as well as, textual data from mentioned UNECE dataset.
 * *Chunking*: RecursiveCharacterTextSplitter for splitting.
 * *Retriever*: **MultiQueryRetriever** with Maximal Marginal Relevance (MMR) is used. Currently analysing different approaches for multi-modality(for texts and tables), e.g., MultiVectorRetriever.
 * Area of refinement approaches

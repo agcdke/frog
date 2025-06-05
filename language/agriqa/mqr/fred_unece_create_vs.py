@@ -11,7 +11,6 @@ from langchain_core.documents import Document
 import ollama
 import re, gc
 from fred_rag_mqr_config import fred_config
-from pdfplumber.utils import get_bbox_overlap, obj_to_bbox
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -32,10 +31,6 @@ def convert_doctable_to_mdtext(page):
     page: pdfplumber page object
     '''
     for table in page.find_tables():
-        filtered_page = page
-        filtered_page = filtered_page.filter(lambda obj: 
-                    get_bbox_overlap(obj_to_bbox(obj), table.bbox) is None
-                )
         df = pd.DataFrame(table.extract())
         df.columns = df.iloc[0]
         markdown_df = df.drop(0).to_markdown(index=False)
@@ -72,6 +67,9 @@ def extract_pdf_text_tables(dir_path, filename):
                     print(f"Convert doc-table to markdown-text format as TypeError occrured: {te}")
                     markdown_df = convert_doctable_to_mdtext(page=page)
                     text_list.append(markdown_df)
+                
+                except Exception as e:
+                    logging.info(f"An exception occured: {str(e)}")
 
     if text_list:
         joined_text = " ".join(text_list)
