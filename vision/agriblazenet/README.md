@@ -24,7 +24,7 @@ The two variables *model_arch_module* and *model_arch_type* are used for model s
 | BlazeFace with CBAM    | imgcls_blaze_cbam    | bcbam                     |
 | BlazeFace with CBwSSAM | imgcls_blaze_cbwssam | mvit_h4b4, cbmvit_h4b4    |
 
-The module **mvit_h4b4** denotes *(a) Type-1 CBwSSAM* module, where *h4b4* refers 4 head and 4 block in the Transformers architecture. Similarly, module **cbmvit_h4b4** denotes *(b) Type-2 CBwSSAM* module, where *h4b4* refers 4 head and 4 block in the Transformers architecture. The [module architecture](assets/img/CBwSSAM.png) is presented.
+The module **mvit_h4b4** denotes *(a) Type-1 CBwSSAM* module, where *h4b4* refers 4 head and 4 block in the Transformers architecture. Similarly, module **cbmvit_h4b4** denotes *(b) Type-2 CBwSSAM* module, where *h4b4* refers 4 head and 4 block in the Transformers architecture. The [module architecture](../../assets/img/CBwSSAM.png) is presented.
 
 ### Evaluation and Model Quantization
 A dataset is split over train, validation, and test datasets. The image augmentation is performed only on train dataset. The final evaluation is done on test dataset using *src/eval_imgcls_soybeanplantstress.py* file. Post-training model quantization is done using LiteRT(former TensorFlow Lite).

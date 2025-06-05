@@ -1,17 +1,18 @@
+"""
+Create RAG-based Question-Answering framework using Multi-Query Retriever.
+"""
 import streamlit as st
 import os, glob, logging
 from langchain_community.vectorstores import Chroma
 from langchain_ollama import OllamaEmbeddings
 from langchain.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_ollama import ChatOllama
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables import RunnablePassthrough
 from langchain.retrievers.multi_query import MultiQueryRetriever
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import FlashrankRerank
 import ollama
 from langchain.chains import RetrievalQA
-from fred_mqr_rag_config import fred_config
+from fred_rag_mqr_config import fred_config
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -19,6 +20,9 @@ logging.basicConfig(level=logging.INFO)
 # Load or create the vector database.
 @st.cache_resource()
 def load_vector_db():
+    '''
+    Load existing vector database.
+    '''
     if fred_config["prefer_pull_model"] == True:
             ollama.pull(fred_config["embedding_model"])
     
@@ -38,6 +42,11 @@ def load_vector_db():
 
 # Create a multi-query retriever.
 def create_retriever(vector_db, model):
+    '''
+    Create multi-query retriever.
+    vector_db: vector database
+    model: LLM model
+    '''
     query_prompt = PromptTemplate(
         input_variables=["context", "question"],
         template=fred_config["fred_contextual_promt_template"],
@@ -57,6 +66,11 @@ def create_retriever(vector_db, model):
 
 # Create RAG chain
 def create_chain(retriever, model):
+    '''
+    Create RAG chain.
+    retriever: document retriever
+    model: LLM model
+    '''
     prompt=ChatPromptTemplate.from_template(fred_config["rag_prompt_template"])
     qa_chain = RetrievalQA.from_chain_type(
         llm=model, retriever=retriever,
@@ -69,6 +83,9 @@ def create_chain(retriever, model):
     return qa_chain
 
 def workflow_fred_mqr_qa():
+    '''
+    Workflow for multi-query retriever based Question-Answering framework.
+    '''
     st.title("FRED Document Assistant")
     
     # User input
